@@ -1,0 +1,24 @@
+## 1-concurrent-dispose/repro.mjs -> exit 1
+FAIL second dispose() waits for in-progress release — released=false when 2nd dispose resolved
+FAIL second effect disposer call waits for in-progress release — released=false
+
+## 2-dispose-hangs-on-async-apply/repro.mjs -> exit 1
+FAIL dispose() of a stuck activation completes and runs registered cleanup — dispose settled=false, cleanup ran=false
+
+## 3-provider-before-dependents/repro-already-stopping.mjs -> exit 1
+FAIL provider waits for an already-stopping dependent — ["provider closed","consumer cleanup saw open=false"]
+
+## 3-provider-before-dependents/repro-transitive.mjs -> exit 1
+FAIL dependents stop (leaf, then mid) before provider closes — ["base closed","mid closed (base open=false)","leaf cleanup (mid open=false)"]
+
+## 3-provider-before-dependents/repro.mjs -> exit 1
+FAIL provider resource outlives dependent cleanup — ["provider closed","consumer cleanup saw open=false"]
+
+## 4-effects-not-lifo/repro.mjs -> exit 1
+FAIL dispose releases effects LIFO, one at a time — second:start,first:start,second:end,first:end
+FAIL rollback after failed activation releases LIFO, one at a time — second:start,first:start,second:end,first:end
+
+## 5-late-effect-leak/repro.mjs -> exit 1
+FAIL resource acquired during a cancelled activation is released — open=1, loggedErrors=[]
+
+Bugs reproduced (nonzero exit = bug present).

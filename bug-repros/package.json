@@ -1,0 +1,2 @@
+{"name":"cordis-bugs","private":true,"type":"module","dependencies":{"cordis":"4.0.0-rc.10"},
+ "scripts":{"run-all":"node run-all.mjs"}}
